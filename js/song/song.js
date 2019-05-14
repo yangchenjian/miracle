@@ -2,8 +2,6 @@ $(function () {
 
  /*
 
- NO.10 , 39.11
- NO.11 , 1.39-04.12  animation-play-state 这个属性来对付胶片转盘
 
 通过主页的url的ID参数来判断给用户播放对应的音乐 location.search() 可以拿到 ?id=xxx 然后用正则拿到id后面的数值
 
@@ -65,14 +63,6 @@ function initPlayer(url) {
       audio.play()
     $('.disc-container .disc').addClass('playing')    
   })
-
-  /* 
-   让歌词滚动要思考的问题
-   1- 歌曲播放的时间  播放器的自带api currentTime   14.00
-   2- 滚动方式 27.44
-   3- 高亮歌词 32.53
-   注意的是要放到 1- initPlayer的方法中去 2- 多用箭头函数 
-  */
 
   setInterval(()=>{
     // 通过自带的API拿到指定时间，同时对拿到的时间进行处理，处理成p标签的data-time的样式（分+秒）方便进行比对
