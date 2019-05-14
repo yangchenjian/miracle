@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>我要播放啦！</title>
+  <link rel="stylesheet" type="text/css" href="css/common/reset.mobile.css">
+  <link rel="stylesheet" type="text/css" href="css/song.css">
+</head>
+<!--  
+  移动端窗口meta标签 meta:vp 就可以快捷生成  如果不用文字会很小！
+  移动端 单位 要非常注意
+1. 整体布局，规划要做好
+  1.1 整体来一个大框，接着指针单放出来，圆环胶片应该是3层，他们是一个组不能分开，接着是歌曲描述的部分是一个大框，里面放与歌曲相关的文字内容,最后放2个按钮，整体是3大块儿 线性布局
+  1.1 -1 .disc-container中的所有东西都居中
+  1.1.1 要把胶片上的指针放到正中间
+  
+  1.2 歌词部分，相应的图片都应该是通过ajax获取的
+
+ -->
+<body>
+  
+  <div class="page">
+    <div class="disc-container">
+     
+      <img class="pointer" src="images/song/pointer.png"><!-- pointer -->
+      <div class="disc">
+          <svg class="icon icon-play" aria-hidden="true">
+            <use xlink:href="#icon-bofang"></use>
+          </svg>
+          <svg class="icon icon-pause" aria-hidden="true">
+            <use xlink:href="#icon-zanting"></use>
+          </svg>
+        <img class="ring" src="images/song/disc-ip6.png">
+        <img class="light" src="images/song/disc_light-ip6.png">
+        <img class="cover"  src="images/song/cover.jpg">
+      </div>
+    </div><!-- disc-container -->
+    <div class="song-description">
+        <h2>沙漠骆驼</h2>
+        <div class="lyric-wrap">
+          <div class="lines"></div>
+        </div> 
+    </div><!-- song-description -->
+
+    <div class="links">
+        <a class="open" href="#">打开</a>
+        <a class="down" href="#">下载</a>
+    </div><!-- links -->
+  </div>
+
+<script src="//libs.baidu.com/jquery/2.1.4/jquery.min.js"></script> 
+<script src="js/song/song.js" type="text/javascript"></script>
+<script src="//at.alicdn.com/t/font_882612_dnkw45sqfas.js" type="text/javascript"></script>
+</body>
+</html>

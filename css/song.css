@@ -1,0 +1,163 @@
+.page{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: transparent url('../images/song/blur-bg.jpg') no-repeat center center;
+    background-size: cover;
+}
+.page:after{
+    content: '';
+    width:100%;
+    height:100%;
+    position: absolute;
+    left:0;
+    top:0;
+    background: inherit;
+    filter: blur(2px);
+    z-index: 2;
+}
+
+.disc-container{
+    position: relative;
+}
+
+
+.disc-container .icon{
+    /* 
+    icon 不光要绝对定位，也要放在 disk容器里面 这样位置相对来说好调整一些，但是会被
+    盖住，要挂z-index数值才行
+    颜色也要改变 fill 来变化
+    默认情况下所有按钮都是要隐藏起来得
+    */
+    position: absolute;
+    width: 12vw;
+    height: 12vw;
+    z-index: 5;
+    fill: white;
+}
+
+/* 
+  如果有 「.playing」 暂停按钮要显示出来
+  搞清楚显示隐藏的逻辑
+*/
+
+.disc-container .playing .icon-pause{ 
+    display: block;
+}
+.disc-container .playing .icon-play{
+    display: none;
+}
+.disc-container  .icon-pause{
+    display: none;
+}
+
+.disc-container .pointer{
+    /* 
+      width: 144px;  
+      屏幕宽度375 自己元素的宽度/屏幕宽度 接着换算成百分比 就是要用的数值 
+      换算可得出  1vw = 6px
+     */
+    width: 24vw;
+    position: absolute;
+    left: 45vw;
+    z-index: 4;
+}
+
+.disc-container .disc{
+    /* 用flex让disc里面的东西都居中 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 17vw;
+
+}
+
+.disc-container .ring,.disc-container .light{
+    width: 72vw;
+    z-index: 3;
+}
+.disc-container .light,.disc-container .cover{
+    position: absolute;
+    z-index: 3;
+}
+
+.disc-container .cover{
+    display: block;
+    width: 45vw;
+    border-radius: 50%;
+    z-index: 3;
+    /* 解决转盘复位问题： 默认就是有动画的，只不过状态是「暂停」，等要playing的时候把动画状态改一下 */
+    -webkit-animation: circle 19s infinite linear;
+    -o-animation: circle 19s infinite linear;
+    animation: circle 19s infinite linear;
+    animation-play-state: paused;
+}
+.disc-container .playing .light,
+.disc-container .playing .cover{
+     animation-play-state: running;
+}
+.song-description{
+    /* 让links靠在最下方 */
+    flex-grow: 1;
+    text-align: center;
+    color: #aeabac;
+    line-height: 1.7;
+    margin-top: 4vw;
+    z-index: 3;
+}
+.song-description h2{
+    color: #fff;
+    font-size: 18px;
+}
+.lyric-wrap{
+    height: 24vw;
+    font-size: 14px;
+    line-height: 2;
+    overflow: hidden;
+}
+
+/* 旋转动画 */
+@keyframes circle{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+
+.song-description .lines{
+    transition: transform .3s ease-out;
+
+}
+.song-description .lines>p.active{
+    color: #fff;
+}
+
+.links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+.links a{
+    width: 38.5vw;
+    margin: 1em;
+    text-align: center;
+    color: #d43b32;
+    border-radius: 1vw;
+    padding: 1.6vw;
+    letter-spacing: 4px;
+}
+.links .open{
+    border: 1px solid #d43b32;
+}
+.links .down{
+    background-color: #d43b32;
+    color: #fff;
+}
+
+
+
+
